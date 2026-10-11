@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2027国考职位筛选器｜专业匹配·三不限·备注避坑 — 免费在线</title>
+<meta name="description" content="2027国考职位表在线筛选：按专业、学历、政治面貌、基层年限一键匹配可报岗位，三不限岗位专区，备注栏避坑解析（性别/证书/户籍/服务期）。不用下载Excel，手机直接用。">
+<meta name="keywords" content="2027国考,国考职位表,国考职位筛选,国考专业目录,三不限岗位,国考岗位查询">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:"PingFang SC","Microsoft YaHei",sans-serif; }
+  :root { --red:#c0392b; --red2:#a93226; --bg:#f7f5f2; --ink:#2b2b2b; --line:#e8e2d9; }
+  body { background:var(--bg); color:var(--ink); }
+  header { background:linear-gradient(135deg,var(--red) 0%,var(--red2) 100%); color:#fff; padding:22px 16px 18px; text-align:center; }
+  header h1 { font-size:22px; letter-spacing:1px; }
+  header p { font-size:13px; opacity:.92; margin-top:6px; }
+  .pill { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:14px; padding:2px 12px; font-size:12px; margin:8px 3px 0; }
+  .wrap { max-width:960px; margin:0 auto; padding:14px 12px 40px; }
+  .panel { background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px; margin-bottom:12px; }
+  .panel h2 { font-size:15px; margin-bottom:10px; color:var(--red); }
+  .row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+  .f { flex:1 1 160px; }
+  .f label { display:block; font-size:12px; color:#8a7f73; margin-bottom:4px; }
+  .f input, .f select { width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:6px; font-size:14px; background:#fff; }
+  .kw { flex:2 1 100%; }
+  .btn { background:var(--red); color:#fff; border:none; border-radius:6px; padding:10px 26px; font-size:15px; cursor:pointer; }
+  .btn.gray { background:#8a7f73; }
+  .btn.mini { padding:5px 12px; font-size:12px; }
+  .more-btn { display:none; background:#fff; color:var(--red); border:1px solid var(--red); border-radius:6px; padding:8px 14px; font-size:13px; cursor:pointer; margin-bottom:8px; }
+  .stats { font-size:13px; color:#6f6558; margin:8px 0; }
+  .stats b { color:var(--red); }
+  table { width:100%; border-collapse:collapse; background:#fff; font-size:13px; }
+  th { background:#faf6f0; color:#6f6558; padding:8px 6px; text-align:left; border-bottom:2px solid var(--line); white-space:nowrap; }
+  td { padding:8px 6px; border-bottom:1px solid #f0ebe3; vertical-align:top; }
+  tr:hover td { background:#fdf9f4; }
+  .tag3 { background:#e3f4e9; color:#1f7a4d; border-radius:10px; padding:1px 8px; font-size:11px; white-space:nowrap; }
+  .warn { background:#fdeeda; color:#b9770e; border-radius:10px; padding:1px 8px; font-size:11px; white-space:nowrap; }
+  .star { cursor:pointer; font-size:16px; color:#ccc; user-select:none; }
+  .star.on { color:#e6a817; }
+  .lock { text-align:center; padding:30px 16px; background:linear-gradient(180deg,#fff,#fdf6ee); border:1px dashed #d4af69; border-radius:10px; margin-top:10px; }
+  .lock h3 { color:var(--red); margin-bottom:8px; }
+  .lock p { font-size:13px; color:#6f6558; margin-bottom:12px; }
+  .card { display:none; background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:10px; }
+  .card .hd { display:flex; justify-content:space-between; gap:8px; align-items:flex-start; }
+  .card .dp { font-weight:bold; font-size:14px; }
+  .card .ps { color:var(--red); font-size:13px; margin-top:2px; }
+  .card .meta { font-size:12px; color:#6f6558; margin-top:6px; line-height:1.7; }
+  #loader { position:fixed; inset:0; background:rgba(247,245,242,.97); z-index:99; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; }
+  #loader .spin { width:38px; height:38px; border:4px solid #e8e2d9; border-top-color:var(--red); border-radius:50%; animation:sp 1s linear infinite; }
+  @keyframes sp { to { transform:rotate(360deg); } }
+  #loader .lt { color:#6f6558; font-size:14px; text-align:center; line-height:1.8; }
+  #lbar { width:240px; height:8px; background:#e8e2d9; border-radius:4px; overflow:hidden; }
+  #lbar i { display:block; height:100%; width:0; background:linear-gradient(90deg,var(--red),#e6a817); border-radius:4px; transition:width .15s; }
+  #modal { position:fixed; inset:0; background:rgba(43,43,43,.55); z-index:98; display:none; align-items:flex-end; justify-content:center; }
+  #modal.open { display:flex; }
+  #mbox { background:#fff; width:100%; max-width:640px; max-height:82vh; overflow:auto; border-radius:14px 14px 0 0; padding:16px; }
+  @media (min-width:721px){ #modal { align-items:center; padding:20px; } #mbox { border-radius:12px; } }
+  #mbox h3 { color:var(--red); font-size:16px; margin-bottom:2px; }
+  #mbox .mp { color:#2b2b2b; font-size:14px; margin-bottom:8px; }
+  #mbox .mline { font-size:12.5px; color:#6f6558; line-height:1.9; border-top:1px dashed var(--line); padding-top:8px; margin-top:8px; }
+  #mbox .mnote { font-size:13px; background:#fdf6ee; border-radius:8px; padding:10px; margin-top:10px; color:#5d4a1f; line-height:1.8; white-space:pre-wrap; }
+  #mbox .mclose { float:right; background:none; border:1px solid var(--line); border-radius:6px; padding:3px 10px; font-size:12px; color:#6f6558; cursor:pointer; }
+  .seo { background:#fff; border:1px solid var(--line); border-radius:10px; padding:16px 14px; margin-bottom:12px; }
+  .seo h2 { font-size:15px; color:var(--red); margin-bottom:10px; }
+  .seo h3 { font-size:13.5px; color:#4a4136; margin:10px 0 4px; }
+  .seo p, .seo li { font-size:13px; color:#5d5346; line-height:1.9; }
+  .seo ul { padding-left:20px; }
+  footer { text-align:center; font-size:12px; color:#a09484; padding:18px 12px 26px; }
+  footer a { color:var(--red); text-decoration:none; }
+  #qaerr, #qaperf { display:none; }
+  @media (max-width:720px) {
+    .tb { display:none; } .card { display:block; }
+    header h1 { font-size:18px; }
+    .more { display:none; }
+    .more.open { display:flex; }
+    .more-btn { display:inline-block; }
+  }
+</style>
+</head>
+<body>
+<div id="loader"><div class="spin"></div><div class="lt" id="loadtxt">职位索引加载中…</div><div id="lbar"><i id="lbarfill"></i></div></div>
+<header>
+  <h1>2027国考职位筛选器 <span style="font-size:13px">在线版</span></h1>
+  <p>专业一键匹配 · 三不限专区 · 备注栏避坑（性别/证书/户籍/服务期）</p>
+  <div>
+    <span class="pill">✓ 数据源：官方职位表</span>
+    <span class="pill">✓ 免下载Excel</span>
+    <span class="pill">✓ 手机直接用</span>
+  </div>
+</header>
+<div class="wrap">
+  <div class="panel">
+    <h2>筛你的可报岗位</h2>
+    <div class="row">
+      <div class="f kw"><label>专业关键词（模糊匹配，多个用空格分隔）</label><input id="major" placeholder="例：计算机 经济学 法学 不限"></div>
+    </div>
+    <button class="more-btn" id="moreBtn" onclick="toggleMore()">更多筛选 ▾</button>
+    <div class="row more" id="moreFilters">
+      <div class="f"><label>学历</label><select id="edu"><option value="">不限</option><option>大专</option><option>本科</option><option>硕士研究生</option><option>博士研究生</option></select></div>
+      <div class="f"><label>政治面貌</label><select id="political"><option value="">不限</option><option>中共党员</option><option>共青团员</option></select></div>
+      <div class="f"><label>基层工作年限</label><select id="tenure"><option value="">不限</option><option>无限制</option><option>一年</option><option>二年</option><option>三年</option><option>五年以上</option></select></div>
+      <div class="f"><label>工作地点（省份）</label><select id="prov"><option value="">全部</option></select></div>
+      <div class="f"><label>机构层级</label><select id="org"><option value="">全部</option><option>中央</option><option>省级</option><option>市县级</option></select></div>
+      <div class="f"><label>只看三不限</label><select id="only3"><option value="">否</option><option value="1">是（不限专业+面貌+年限）</option></select></div>
+    </div>
+    <div class="row"><button class="btn" onclick="doFilter()">开始筛选</button> <button class="btn gray" onclick="reset()">重置</button> <span class="stats" id="stats" style="align-self:center"></span></div>
+  </div>
+  <div id="results"></div>
+  <div class="lock" id="lock" style="display:none">
+    <h3>🔓 免费版每次展示前 20 条</h3>
+    <p>解锁全部结果 + 备注栏避坑解析 + 竞争比参考（¥9.9，拍下秒发使用码）</p>
+    <button class="btn" onclick="location.href='https://www.goofish.com/item?id=1090075357656'">去闲鱼解锁完整版 ¥9.9</button>
+    <p style="margin-top:8px;font-size:12px">已有码？<a href="#" onclick="unlock();return false" style="color:var(--red)">输入使用码</a></p>
+  </div>
+
+  <section class="seo">
+    <h2>2027国考时间线（参考往年节奏，以官方公告为准）</h2>
+    <ul>
+      <li><b>预计10月中旬</b>：国家公务员局发布招考公告与职位表，同步开通报名网站（具体日期以官方发布为准）。</li>
+      <li><b>预计10月中下旬</b>：网上报名提交与资格审查，往年报名窗口约十天左右，建议避开最后一天高峰。</li>
+      <li><b>报名后1-2天</b>：可查询资格审查结果，未通过可在报名期内改报其他职位。</li>
+      <li><b>预计11月底至12月初</b>：公共科目笔试（行政职业能力测验、申论），部分职位组织专业科目考试。</li>
+      <li><b>次年1月起</b>：笔试成绩公布，面试、体检、考察等后续环节由招录机关另行通知。</li>
+    </ul>
+    <p>以上为往年惯例性节奏梳理，仅供备考规划参考；2027年度的准确时间、报考条件与政策，请以国家公务员局官网公告为准。</p>
+  </section>
+
+  <section class="seo">
+    <h2>如何用筛选器选岗：四步缩小范围</h2>
+    <ul>
+      <li><b>第一步 · 专业初筛</b>：在搜索框输入专业关键词，多个关键词用空格分隔（如「计算机 软件工程」表示同时命中）。不确定自己的专业属于哪类，可以直接搜专业名称，再点开备注核对专业代码。</li>
+      <li><b>第二步 · 硬条件过滤</b>：用学历、政治面貌、基层工作年限、工作省份、机构层级快速缩小范围——这些条件不满足，专业再合适也报不了。</li>
+      <li><b>第三步 · 看「三不限」与备注避坑</b>：三不限岗位（不限专业+面貌+年限）门槛最低但竞争通常更激烈；点开每个职位的「备注避坑」，逐条核对性别、证书、户籍、服务期、专业能力测试等特殊要求，避免进面后才发现不合规。</li>
+      <li><b>第四步 · 收藏对比</b>：给心仪岗位点★收藏（存在本机浏览器），对照招考人数、工作地点、落户地做最终取舍。</li>
+    </ul>
+    <p>提示：职位表的专业要求通常按「专业类＋具体专业」两级表述，模糊匹配命中只代表初筛通过，最终以招录机关的资格审查结论为准。</p>
+  </section>
+
+  <section class="seo">
+    <h2>专业目录对照：你的专业属于哪一类</h2>
+    <p>国考职位表中的专业要求，一般参照教育部门的学科目录按「学科门类 — 专业类 — 具体专业」层级表述。以常见的<b>计算机类</b>为例，通常包含计算机科学与技术、软件工程、网络工程、信息安全、物联网工程、数字媒体技术、数据科学与大数据技术等具体专业；<b>法学类</b>、<b>经济学类</b>、<b>中国语言文学类</b>、<b>电子信息类</b>等大类也各自覆盖数十个具体专业。</p>
+    <h3>对照时注意三点</h3>
+    <ul>
+      <li>认准<b>毕业证 / 学位证</b>上的专业全称：职位要求写的是具体专业名称时，一般要求名称一致（部分允许「XX类」内专业报考，以职位表备注为准）。</li>
+      <li>跨门类辅修、第二学位能否报考，各招录机关口径不同，务必拨打职位表中的咨询电话确认。</li>
+      <li>本站的专业搜索是模糊关键词匹配，适合快速初筛；权威依据仍是官方发布的职位表与专业目录，以及招录机关的解释。</li>
+    </ul>
+  </section>
+</div>
+<footer>数据说明：职位表来自国家公务员局官方公告公开数据（2026年度），仅供参考，报考以官方为准。<br>老孙的效率工坊 · 深圳十五年办公室手艺人<br><a href="https://www.goofish.com/item?id=1090075357656">Excel完整版（含K-O备注解析列）</a></footer>
+<div id="modal" onclick="if(event.target===this)closeModal()"><div id="mbox" role="dialog" aria-modal="true"></div></div>
+<div id="qaerr"></div><div id="qaperf"></div>
+<script>
+/* ---------- QA instrumentation (hidden) ---------- */
+function qaErr(m) { const b = document.getElementById('qaerr'); b.textContent = (b.textContent ? b.textContent + ' || ' : '') + m; }
+window.addEventListener('error', e => qaErr('JS: ' + e.message + ' @' + String(e.filename || '').split('/').pop() + ':' + e.lineno));
+window.addEventListener('unhandledrejection', e => qaErr('Promise: ' + ((e.reason && e.reason.message) || e.reason)));
+function qaPerf() {
+  try {
+    const rs = performance.getEntriesByType('resource').map(r => ({ f: r.name.split('/').pop(), wire: r.transferSize, body: r.decodedBodySize }));
+    document.getElementById('qaperf').textContent = JSON.stringify(rs);
+  } catch (e) { /* noop */ }
+}
+
+/* ---------- state ---------- */
+let IDX = null, DATA = [], SHOWN = [], FREE_N = 20;
+let stars = JSON.parse(localStorage.getItem('gk_stars') || '{}');
+const FULL_CACHE = {}; // provIdx -> Map(code -> full record)
+const norm = s => (s || '').replace(/\s+/g, '');
+const K = x => x.code + '|' + x.dept + '|' + x.position;
+function is3(x) { return /不限/.test(x.major) && /不限/.test(x.political) && /不限|无限制/.test(x.tenure); }
+function majorHit(x, kws) { if (!kws.length) return true; const m = norm(x.major); return kws.every(k => m.includes(norm(k))); }
+function esc(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function escapeAttr(s) { return s.replace(/'/g, "\\'"); }
+
+/* ---------- streaming fetch with real byte progress ---------- */
+async function fetchJSONProgress(url, onProg) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const total = +(res.headers.get('content-length') || 0);
+  if (!res.body || !res.body.getReader) { const j = await res.json(); if (onProg) onProg(1, 1); return j; }
+  const reader = res.body.getReader(); const chunks = []; let got = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value); got += value.length;
+    if (onProg) onProg(got, total);
+  }
+  const text = await new Blob(chunks).text();
+  return JSON.parse(text);
+}
+const fmtMB = b => (b / 1048576).toFixed(2) + 'MB';
+
+/* ---------- boot ---------- */
+async function boot() {
+  const txt = document.getElementById('loadtxt'), fill = document.getElementById('lbarfill');
+  try {
+    IDX = await fetchJSONProgress('data/index.json', (got, total) => {
+      if (total) {
+        fill.style.width = Math.min(100, got / total * 100).toFixed(1) + '%';
+        txt.textContent = `职位索引加载中… 已下载 ${fmtMB(got)} / ${fmtMB(total)}（${Math.round(got / total * 100)}%）`;
+      } else {
+        txt.textContent = `职位索引加载中… 已下载 ${fmtMB(got)}`;
+      }
+    });
+    /* decode dictionary-encoded index into light objects */
+    const { d, p, m, e, l, c, t, o, r } = IDX;
+    DATA = r.map(row => ({
+      code: row[0], dept: d[row[1]], position: p[row[2]], count: row[3],
+      major: m[row[4]], edu: e[row[5]], political: c[row[6]], tenure: t[row[7]],
+      location: l[row[8]], org: o[row[9]], provIdx: row[10], nf: row[11],
+    }));
+    const provSel = document.getElementById('prov');
+    IDX.prov.forEach(pr => { const op = document.createElement('option'); op.textContent = pr; op.value = pr; provSel.appendChild(op); });
+    /* query params (shareable filters / QA) */
+    const qp = new URLSearchParams(location.search);
+    const put = (id, key) => { const v = qp.get(key); if (v) document.getElementById(id).value = v; };
+    put('major', 'q'); put('edu', 'edu'); put('political', 'pol'); put('tenure', 'ten'); put('prov', 'prov'); put('org', 'org'); put('only3', 'o3');
+    document.getElementById('loader').style.display = 'none';
+    document.documentElement.setAttribute('data-ready', String(DATA.length));
+    doFilter();
+    if (qp.get('detail') === '1' && SHOWN.length) openDetail(0);
+    setTimeout(qaPerf, 400);
+  } catch (err) {
+    qaErr('boot: ' + err.message);
+    document.getElementById('lbar').style.display = 'none';
+    txt.innerHTML = '加载失败（' + esc(err.message) + '）<br><button class="btn" style="margin-top:10px" onclick="location.reload()">重试</button>';
+  }
+}
+
+/* ---------- filter & render ---------- */
+function doFilter() {
+  if (!DATA.length) return;
+  const kws = document.getElementById('major').value.trim().split(/\s+/).filter(Boolean);
+  const edu = document.getElementById('edu').value, pol = document.getElementById('political').value,
+        ten = document.getElementById('tenure').value, prov = document.getElementById('prov').value,
+        org = document.getElementById('org').value, o3 = document.getElementById('only3').value;
+  const t0 = performance.now();
+  const rs = DATA.filter(x =>
+    majorHit(x, kws) &&
+    (!edu || (x.edu || '').includes(edu)) &&
+    (!pol || norm(x.political).includes(norm(pol))) &&
+    (!ten || (ten === '无限制' ? /无限制|不限/.test(x.tenure) : norm(x.tenure).includes(norm(ten)))) &&
+    (!prov || (x.provIdx >= 0 && IDX.prov[x.provIdx] === prov)) &&
+    (!org || (x.org || '') === org) &&
+    (!o3 || is3(x))
+  );
+  render(rs, Math.round(performance.now() - t0));
+}
+function noteBadge(x) { return x.nf ? '<span class="warn">⚠ 有特殊限制</span>' : '<span style="color:#8a7f73">无</span>'; }
+function render(rs, ms) {
+  const total = rs.reduce((s, x) => s + (+x.count || 0), 0);
+  document.getElementById('stats').innerHTML = `匹配 <b>${rs.length}</b> 个岗位 / 共招 <b>${total.toLocaleString()}</b> 人（库${DATA.length.toLocaleString()}条 · ${ms}ms）`;
+  document.documentElement.setAttribute('data-hits', String(rs.length));
+  document.documentElement.setAttribute('data-people', String(total));
+  const box = document.getElementById('results'), lock = document.getElementById('lock');
+  SHOWN = rs.slice(0, FREE_N);
+  let html = '<div class="panel tb"><table><tr><th></th><th>部门/职位</th><th>专业</th><th>学历</th><th>面貌</th><th>年限</th><th>地点</th><th>备注避坑</th><th></th></tr>';
+  SHOWN.forEach((x, i) => {
+    const s = stars[K(x)] ? 'on' : '';
+    html += `<tr><td class="star ${s}" onclick="tg(this,'${escapeAttr(K(x))}')">★</td><td><b>${esc(x.dept)}</b><br>${esc(x.position)}（${x.count}人）</td><td>${esc(x.major)}</td><td>${x.edu||''}</td><td>${x.political||''}</td><td>${x.tenure||''}</td><td>${esc(x.location)}</td><td>${is3(x) ? '<span class="tag3">三不限</span> ' : ''}${noteBadge(x)}</td><td><button class="btn gray mini" onclick="openDetail(${i})">备注避坑</button></td></tr>`;
+  });
+  html += '</table></div>';
+  SHOWN.forEach((x, i) => {
+    html += `<div class="card"><div class="hd"><div><div class="dp">${esc(x.dept)}</div><div class="ps">${esc(x.position)}（招${x.count}人）</div></div><span class="star ${stars[K(x)] ? 'on' : ''}" onclick="tg(this,'${escapeAttr(K(x))}')">★</span></div><div class="meta">🎓${x.edu||''}｜👤${x.political||''}｜⏳${x.tenure||''}｜📍${esc(x.location)}｜${x.org||''}${is3(x) ? '｜<span class="tag3">三不限</span>' : ''}</div><div style="margin-top:8px">${noteBadge(x)} <button class="btn gray mini" onclick="openDetail(${i})">查看完整备注避坑</button></div></div>`;
+  });
+  if (!rs.length) html = '<div class="panel" style="text-align:center;color:#8a7f73">没有匹配的岗位——试试放宽条件，或用「不限」专业搜索三不限岗位</div>';
+  box.innerHTML = html;
+  lock.style.display = rs.length > FREE_N ? 'block' : 'none';
+}
+
+/* ---------- on-demand full detail (note/degree) via province chunk ---------- */
+async function getFullRecord(provIdx, code) {
+  if (provIdx < 0) throw new Error('该职位无省份分块');
+  let map = FULL_CACHE[provIdx];
+  if (!map) {
+    const key = 'p' + String(provIdx).padStart(2, '0');
+    const res = await fetch('data/full/' + key + '.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    map = new Map((await res.json()).map(x => [x.code, x]));
+    FULL_CACHE[provIdx] = map;
+  }
+  return map.get(code) || null;
+}
+async function openDetail(i) {
+  const x = SHOWN[i]; if (!x) return;
+  const box = document.getElementById('mbox');
+  document.getElementById('modal').classList.add('open');
+  const provName = x.provIdx >= 0 ? IDX.prov[x.provIdx] : '';
+  box.innerHTML = `<button class="mclose" onclick="closeModal()">关闭 ✕</button><h3>${esc(x.dept)}</h3><div class="mp">${esc(x.position)}（招${x.count}人）</div><div class="mline">正在加载${esc(provName)}分块数据…</div>`;
+  try {
+    const f = await getFullRecord(x.provIdx, x.code);
+    if (!f) { box.querySelector('.mline').textContent = '未在该省分块中找到该职位（code: ' + esc(x.code) + '）'; return; }
+    box.innerHTML = `<button class="mclose" onclick="closeModal()">关闭 ✕</button><h3>${esc(f.dept)}</h3><div class="mp">${esc(f.position)}（招${f.count}人）</div>`
+      + `<div class="mline">🔤 职位代码：<b>${esc(f.code)}</b><br>🎓 学历：${esc(f.edu)}｜📐 学位：${esc(f.degree)}<br>👤 政治面貌：${esc(f.political)}｜⏳ 基层年限：${esc(f.tenure)}<br>📍 工作地点：${esc(f.location)}｜🏢 机构层级：${esc(f.org)}${is3(x) ? '<br><span class="tag3">三不限</span>' : ''}</div>`
+      + `<div class="mnote"><b>备注栏原文：</b><br>${esc(f.note) || '无特殊备注'}</div>`;
+  } catch (err) {
+    qaErr('detail: ' + err.message);
+    const m = box.querySelector('.mline');
+    if (m) m.textContent = '备注加载失败（' + err.message + '），请重试';
+  }
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ---------- misc ---------- */
+function tg(el, key) { stars[key] = !stars[key]; if (!stars[key]) delete stars[key]; localStorage.setItem('gk_stars', JSON.stringify(stars)); el.classList.toggle('on'); }
+function reset() { ['major','edu','political','tenure','prov','org','only3'].forEach(id => document.getElementById(id).value = ''); doFilter(); }
+function toggleMore() { const m = document.getElementById('moreFilters'); const open = m.classList.toggle('open'); document.getElementById('moreBtn').textContent = open ? '收起筛选 ▴' : '更多筛选 ▾'; }
+function unlock() { const c = prompt('输入购买后获得的使用码：'); if (c) { localStorage.setItem('gk_code', c); FREE_N = 99999; alert('解锁成功，刷新后生效'); } }
+boot();
+</script>
+</body>
+</html>
